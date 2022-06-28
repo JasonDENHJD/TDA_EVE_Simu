@@ -2,14 +2,11 @@
 <project version="4">
   <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
-      <paths name="远程主机 (238d9df9-191c-42fd-886c-c7799c6e77c4)">
+      <paths name="WSL-Ubuntu">
         <serverdata>
           <mappings>
-            <mapping deploy="/tmp/tmp.eiSgOhjIEB" local="$PROJECT_DIR$" />
+            <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
-          <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug-" />
-          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>
