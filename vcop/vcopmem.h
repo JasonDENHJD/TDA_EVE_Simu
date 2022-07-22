@@ -37,7 +37,8 @@
 
 #ifndef _MEMVCOP_H
 #define _MEMVCOP_H
-
+//#include "vcop.h"
+#include "stdint.h"
 /*-----------------------------------------------------------------------------
 * VCOP_MEMVIEW - Possible VCOP memory view options (default: VCOP_MEMFLAT)
 *                VCOP_MEMFLAT:    Users may allocate memory from any of the
@@ -71,7 +72,8 @@ typedef enum memheap
     VCOP_IBUFHA,
     VCOP_IBUFLB,
     VCOP_IBUFHB,
-    VCOP_WMEM
+    VCOP_WMEM,
+    VCOP_MEM_ALL
 } VCOP_MEMHEAP;
 
 typedef enum alignspec
@@ -84,4 +86,29 @@ typedef enum alignspec
     VCOP_16K           = 0x4000
 } VCOP_ALIGNSPEC;
 
+typedef struct
+{
+    float MEM_UESD;
+    float MEM_MAX;
+} vcop_mem_info_t;
+
+typedef struct
+{
+    VCOP_MEMHEAP HEAP;
+    uint16_t SIZE;
+}vcop_mem_data_info_t;
+
+typedef struct
+{
+    vcop_mem_info_t IBUFLA;
+    vcop_mem_info_t IBUFHA;
+    vcop_mem_info_t IBUFLB;
+    vcop_mem_info_t IBUFHB;
+    vcop_mem_info_t WMEM;
+}vcop_memheap_info_t;
+
+void VCOP_Mem_Init(void);
+void VCOP_Mem_Print_Usage(void);
+void *VCOP_Mem_Malloc(VCOP_MEMHEAP heap, uint16_t size);
+void VCOP_Mem_Free(void *memdata);
 #endif /* MEMVCOP_H */

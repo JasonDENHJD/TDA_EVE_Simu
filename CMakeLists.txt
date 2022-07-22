@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.22)
 project(tda2_eve_simulation_remote)
 
-set(CMAKE_CXX_STANDARD 17)
-find_package(OpenCV 4 REQUIRED)
+#set(CMAKE_CXX_STANDARD 17)
+#find_package(OpenCV 4 REQUIRED)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpermissive")
 add_compile_options(-Wmultichar -gdwarf-2 -m32)
 
@@ -46,4 +46,4 @@ include_directories( kernel/ vcop/ ti/ kernel/fft/inc)
 
 #set(VCOP_KERNEL kernel/vcop_dcoffset_windowing_kernel.k)
 set(VCOP_FFT_WRAP kernel/fft/vcop_fft_npt_16ix16o_32inter_wrapper.cpp kernel/fft/vcop_fft_npt_16ix16o_gen_twiddleFactor.cpp kernel/fft/vcop_fft_npt_16ix16o_wrapper.cpp)
-add_executable(tda2_eve_simulation_remote main.cpp ${VCOP_FFT_WRAP})
+add_executable(tda2_eve_simulation_remote main.cpp vcop/vcopmem.cpp vcop/file_io.cpp ${VCOP_FFT_WRAP})
